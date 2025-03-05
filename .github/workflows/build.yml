@@ -1,0 +1,15 @@
+name: Setup SSH Access to Runner
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  setup-ssh:
+    runs-on: depot-ubuntu-24.04-32 # Change to your custom runner label
+    timeout-minutes: 720  # Max runtime of 12 hours
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        limit-access-to-actor: false
